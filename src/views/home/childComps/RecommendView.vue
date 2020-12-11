@@ -36,6 +36,7 @@
   .recommend-item {
     flex: 1;
   }
+  /*设置图片的样式*/
   .recommend-item img {
     width: 65px;
     height: 65px;
