@@ -24,5 +24,6 @@
 
     display: flex;
     text-align: center;
+    z-index: 9;
   }
 </style>
