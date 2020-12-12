@@ -8,7 +8,8 @@
                  @tabClick1="tabClick"
                  class="tab-control"></tab-control>
     <goods-list :goods="showGoods"></goods-list>
-   </div>
+
+  </div>
 </template>
 
 <script>
@@ -48,12 +49,12 @@
           'sell': {page: 0, list: []},
         },
         //默认当前类型
-        currentType:'pop'
+        currentType: 'pop'
 
       }
     },
-    computed:{
-      showGoods(){
+    computed: {
+      showGoods() {
         return this.goods[this.currentType].list
       }
     },
@@ -88,19 +89,19 @@
       /**
        * 事件监听相关方法
        * */
-    //  导航点击切换获取数据
-      tabClick(index){
-         switch (index) {
-           case 0:
-             this.currentType='pop'
-             break
-           case 1:
-             this.currentType='new'
-             break
-           case 2:
-             this.currentType='sell'
-             break
-         }
+      //  导航点击切换获取数据
+      tabClick(index) {
+        switch (index) {
+          case 0:
+            this.currentType = 'pop'
+            break
+          case 1:
+            this.currentType = 'new'
+            break
+          case 2:
+            this.currentType = 'sell'
+            break
+        }
       }
 
     }
