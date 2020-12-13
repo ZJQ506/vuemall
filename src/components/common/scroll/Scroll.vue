@@ -11,6 +11,12 @@
 
   export default {
     name: "Scroll",
+    props:{
+      probeType:{
+        type:Number,
+        default:0
+      }
+    },
     data() {
       return {
         scroll: null
@@ -20,7 +26,8 @@
     updated() {
       this.scroll = new BScroll(this.$refs.wrapper,
         {
-          click: true
+          click: true,
+          probeType: this.probeType
         })
     },
     methods: {

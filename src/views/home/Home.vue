@@ -2,7 +2,7 @@
   <div id="home">
     <nav-bar class="home-nav"></nav-bar>
 
-    <scroll class="content" ref="scroll"><!--滚动插件-->
+    <scroll class="content" ref="scroll" :probe-type="3"><!--滚动插件-->
       <home-swiper :banners="banners"></home-swiper><!--轮播图-->
       <recommend-view :recommends="recommends"></recommend-view><!--四个圆图-->
       <feature-view></feature-view><!--滚动插件-->
@@ -141,6 +141,9 @@
     position: sticky;
     top: 44px;
     z-index: 9;
+  }
+  .content{
+    height: 99vh;
   }
 
 </style>
