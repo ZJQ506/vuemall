@@ -1,14 +1,19 @@
 <template>
   <div id="home">
     <nav-bar class="home-nav"></nav-bar>
-    <home-swiper :banners="banners"></home-swiper>
-    <recommend-view :recommends="recommends"></recommend-view>
-    <feature-view></feature-view>
-    <tab-control :titless="['流行','新款','精选']"
-                 @tabClick1="tabClick"
-                 class="tab-control"></tab-control>
-    <goods-list :goods="showGoods"></goods-list>
 
+    <scroll class="content" ref="scroll"><!--滚动插件-->
+      <home-swiper :banners="banners"></home-swiper><!--轮播图-->
+      <recommend-view :recommends="recommends"></recommend-view><!--四个圆图-->
+      <feature-view></feature-view><!--滚动插件-->
+      <!--滚动插件-->
+      <tab-control :titless="['流行','新款','精选']"
+                   @tabClick1="tabClick"
+                   class="tab-control"></tab-control>
+      <goods-list :goods="showGoods"></goods-list>
+    </scroll>
+    <!--native 监听组件的根元素的原生事件-->
+    <back-top @click.native="backClick"></back-top><!--返回顶部插件-->
   </div>
 </template>
 
@@ -21,7 +26,8 @@
   import TabControl from 'components/content/tabControl/TabControl'
   import GoodsList from 'components/content/goods/GoodsList'
   import GoodsListItem from 'components/content/goods/GoodsListItem'
-
+  import Scroll from 'components/common/scroll/Scroll'
+  import BackTop from 'components/content/backTop/BackTop'
 
   import {getHomeMultidata, getHomeGoods} from "network/home"
 
@@ -36,7 +42,9 @@
       NavBar,
       TabControl,
       GoodsList,
-      GoodsListItem
+      GoodsListItem,
+      Scroll,
+      BackTop
     },
     data() {
       return {
@@ -102,6 +110,12 @@
             this.currentType = 'sell'
             break
         }
+      },
+
+      backClick() {
+        // this.$ref.scroll.scrollTo()
+        // 没有用scroll的返回顶部
+        window.scrollTo({top:0,behavior:"smooth"});
       }
 
     }
@@ -128,4 +142,5 @@
     top: 44px;
     z-index: 9;
   }
+
 </style>
